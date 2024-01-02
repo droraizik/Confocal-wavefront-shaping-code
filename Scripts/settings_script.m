@@ -1,5 +1,7 @@
 %experiment name
 save_folder =                               'results';      %data folder
+save_params =                               {'SC','HAD_S','OPT_S','FOV'};   %which structs to save
+
 %flipper
 SC.motors_flags.flipper =                   1;              %flipper motor ono
 %BSI
@@ -25,7 +27,7 @@ OPT_S.SNR_max_val =                         0.09;           %set exposure such t
 OPT_S.num_images_mean_first =               5;              %find max of first image
 
 % validation
-SC.n_PG =                                   200;            %half number of pixels in validation image
+SC.n_PG =                                   50;            %half number of pixels in validation image
 SC.r0_PG =                                  803;            %validation camera 00
 SC.c0_PG =                                  1238;           %validation camera 00
 
@@ -34,8 +36,7 @@ SC.n =                                      800;            %half number of pixe
 
 % Optimization settings
 OPT_S.M =                                   32;             %Hadamard basis size (MxM)
-% OPT_S.rads =                                [28 28 28];     %Optimization elements max radius (will be explained)
-OPT_S.rads =                                [4 4]     %Optimization elements max radius (will be explained)
+OPT_S.rads =                                [28 28 28];     %Optimization elements max radius (will be explained)
 OPT_S.num_phases =                          4;              %number of phases to restore sinusoid
 OPT_S.mid_pixes =                           [3 2];          %number of pixels to mean in optimization
 OPT_S.mid_pix_set =                         [0 0.5];        %when to set the mean number (for example, 0.5 is half of total iterations)
@@ -59,7 +60,7 @@ FOV.shift_alpha =                           -30;            %default value for t
 FOV.num_rand_PG =                           30;             %number of mean images - capture Ground truth
 FOV.validation_cam_rand_radius =            1;              %random illumination radius
 FOV.d_ramp =                                4*6.5e-3;       %big area ramp delta
-FOV.max_ramp =                              60*6.5e-3;      %big area ramp max
+FOV.max_ramp =                              25*6.5e-3;      %big area ramp max
 FOV.big_area_mean_num =                     2;              %number of random illuminations
 FOV.big_area_scale =                        3;              %random illumination magnification
 
@@ -67,9 +68,4 @@ FOV.big_area_scale =                        3;              %random illumination
 FOV.d_conf_pix =                            1;              %confocal ramp delta
 FOV.n_conf =                                30;             %confocal ramp max
 FOV.confocal_n_save =                       3;              %confocal window capture
-FOV.conf_scan_order_str =                   'x_cont';       %confocal scan direction
 
-% flags
-OPT_S.SLM_las_flag =                        1;
-OPT_S.SLM_cam_flag =                     	1;
-OPT_S.SLM_flag_nearest =                    1;

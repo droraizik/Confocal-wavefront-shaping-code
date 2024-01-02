@@ -1,4 +1,6 @@
 function [r,c,max_val] = max_rc(I,pix_smooth)
+%returns location r and c of maximum in image, 
+% max_val returns mean of small area around r c determined by pix_smooth
 if(~exist('pix_smooth','var'))
     pix_smooth = 0;
 end

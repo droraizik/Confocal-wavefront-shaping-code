@@ -8,7 +8,6 @@ try
     %% Settings
     settings_script;
     save_name =                                 'deep_neuron_400um';
-    save_params =                               {'SC','HAD_S','OPT_S','FOV'};
     %% Initialize
     Initialize_system;
     %% Original images
@@ -18,17 +17,15 @@ try
     %% Evaluation
     evaluate_optimization_BSI;
     evaluate_optimization_PG;
-    
     %% find tilt shift parameter
     tilt_shift_find_alpha;
     tilt_shift_scan_PG;
     %% Big FOV
     capture_big_area_PG;
-%     FOV.shift_alpha = -30;
-%     confocal_scan; 
+    capture_big_area_BSI;
+    confocal_scan; 
     %% finish
     save_data;
-    tgprintf('finish');
 catch e
     error_script;
 end
